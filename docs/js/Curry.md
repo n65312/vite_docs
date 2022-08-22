@@ -1,0 +1,49 @@
+---
+title: '科里化函数'
+date: 2017-06-30
+tags:
+ - JS进阶
+---
+
+# 科里化函数
+
+curry：Haskell curry
+
+## 定义
+
+科里化函数：固定某个函数的一些参数，得到该函数剩余参数的一个新函数，如果没有剩余参数，则调用。
+
+## 使用
+
+```js
+/**
+ * 科里化函数
+ * 在函数式编程中，科里化最重要的作用是把多参函数变为单参函数。
+ */
+function curry(func) {
+  // 得到从下标1开始的参数
+  var args = Array.prototype.slice.call(arguments, 1)
+  var that = this
+  return function() {
+    var curArgs = Array.from(arguments) // 当前调用的参数
+    var totalArgs = args.concat(curArgs)
+    if (totalArgs.length >= func.length) {
+      // 参数数量够了
+      return func.apply(null, totalArgs)
+    } else {
+      // 参数数量仍然不够
+      totalArgs.unshift(func)
+      return that.curry.apply(that, totalArgs)
+    }
+  }
+}
+
+// 例1
+function f(x, y, z) {
+  return (x + y) * z
+}
+
+// 求：(2+3)*5  (2+5)*6  (2+4)*7  (2+4)*16
+var g = myPlugin.curry(f, 2)
+console.log(g(3, 5))
+```

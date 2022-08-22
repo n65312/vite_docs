@@ -1,0 +1,131 @@
+---
+title: '其他事件'
+date: 2017-06-23
+tags:
+ - JS
+---
+
+# 其他事件
+
+## 表单事件
+
+- `focus`
+
+  元素聚焦时触发（能与用户发生交互的元素，都可以聚焦），该事件不会冒泡。
+
+- `blur`
+
+  元素失去焦点时触发,该事件不会冒泡。
+
+- `submit`
+
+  提交表单事件，仅在`form`元素有效。
+
+- `change`
+
+  文本改变事件
+
+- `input`
+
+  文本改变事件，即时触发。
+
+## 其他事件
+
+> 浏览器渲染页面的过程：
+>
+> 1. 得到页面的源代码
+> 2. 创建document节点
+> 3. 从上到下，将元素依次添加到dom树中，每添加一个元素，进行预渲染
+> 4. 按照结构，依次渲染子节点
+
+- `load` 
+
+  `window的load`事件：页面中所有资源全部加载完毕的事件
+
+  `图片的load`事件：图片资源加载完毕的事件
+
+- `DOMContentLoaded`
+
+  `document的DOMContentLoaded`：dom树构建完成后发生
+
+  `DOMContentLoaded`必须使用DOM2级事件注册，即
+
+  ```js
+  document.addEventListener("DOMContentLoaded",function(){
+    // 执行代码
+  })
+  ```
+
+- `readystatechange`
+
+  当文档的 [`readyState`](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/readyState) 属性发生改变时，会触发 `readystatechange` 事件。
+
+  **`Document.readyState`** 属性描述了[`document`](https://developer.mozilla.org/zh-CN/docs/Web/API/Document) 的加载状态。
+
+  `readystate`：loading（正在加载）、interactive（可交互）、complete（完成）
+
+  `interactive`：触发`DOMContentLoaded`事件
+
+  `complete`：触发`window的load`事件
+
+**js代码应该尽量写到页面底部，避免阻塞后续的渲染，也避免运行js时，得不到页面中的元素。**
+
+**css代码应该写到页面顶部，避免出现闪烁（如果放到页面底部，会导致元素先没有样式，使用丑陋的默认样式，然后当读取到css文件后，重新改变样式）**
+
+- unload、beforeunload（仅在IE中有效）
+
+  `beforeunload`：`window`的事件，关闭窗口时运行，可以阻止关闭窗口
+
+  `unload`：`window`的事件，关闭窗口时运行
+
+  区别：
+
+  - 执行顺序：先运行`beforeunload`，后运行`unload`
+  - `beforeunload`可以阻止关闭窗口，`unload`无法阻止窗口关闭
+
+- `scroll`
+
+  窗口发生滚动时运行的事件。
+
+  通过`scrollTop`和`scrollLeft`，可以获取和设置滚动距离。
+
+  获取整个网页的`scrollTop`：
+
+  兼容性写法：`document.documentElement.scrollTop + document.body.scrollTop`
+
+- `resize`
+
+  窗口尺寸发生改变时运行的事件。
+
+> 窗口与元素尺寸：
+>
+> | 属性                                                         | 说明                                                         |
+> | ------------------------------------------------------------ | ------------------------------------------------------------ |
+> | `window.screen.width`、<br />`window.screen.height`          | 获取屏幕的宽、高                                             |
+> | `window.outerWidth`、`window.outerHeight`                    | 获取浏览器窗口外部的宽、高                                   |
+> | `window.innerWidth`、`window.innerHeight`                    | 获得浏览器窗口的内容区域的宽、高，包含垂直滚动条(如果有的话)。 |
+> | `document.documentElement.clientWidth`、<br />`document.documentElement.clientHeight` | 获取视口的宽、高                                             |
+> | `div.clientWidth`、`div.clientHeight`                        | 获取div元素内部的宽、高（不包含边框）                        |
+> | `div.offsetWidth`、`div.offsetHeight`                        | 获取div元素自身可视宽度加上左右border的宽度                  |
+> | `div.scrollWidth`、`div.scrollHeight`                        | 获取div元素滚动视图的宽、高                                  |
+>
+
+- `contextmenu`
+
+  右键菜单事件
+
+- `paste`
+
+  粘贴事件，
+
+- `copy`
+
+  复制事件
+  
+- `cut`
+
+  剪切事件
+
+> **clipboardData**属性保存了一个剪切板数据对象
+>
+> ​	可以通过`e.clipboardData.getData()`获取剪切板中的数据

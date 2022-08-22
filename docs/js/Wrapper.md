@@ -1,0 +1,180 @@
+---
+title: '原始类型包装器'
+date: 2017-06-16
+tags:
+ - JS
+---
+
+# 原始类型包装器
+
+- new 包装器(值)：返回一个对象。
+- 包装器(值)：返回一个原始类型。
+
+## Number 
+
+[MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number)
+
+### 静态成员
+
+- `isNaN() `
+
+  确定传递的值是否是 NaN。
+
+- `isFinite() `
+
+  确定传递的值类型及本身是否是有限数。
+
+- `isInteger() `
+
+  确定传递的值类型是“number”，且是整数。
+
+- `parseFloat() `
+
+  将一个数据转换为小数。
+
+- `parseInt() `
+
+  将一个数据转换为整数，直接舍去小数部分。
+
+parseFloat、parseInt 要求参数是一个字符串，如果不是字符串，则会先转换为字符串。
+从字符串开始位置（从左到右）进行查找，找到第一个有效的数字进行转换，左右空白字符忽略，如果没有找到，则返回 NaN
+
+`parseInt()` 可以传递第二个参数，表示将给定的字符串，识别为多少进制
+
+### 实例成员
+
+- `toFixed() `
+
+  指定保留小数的位数，会四舍五入。
+
+- `toPrecision()`
+
+  以指定的精度,返回一个字符串。
+
+## Boolean
+
+[MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Boolean)
+
+**Boolean** 对象是一个布尔值的对象包装器。
+
+如果需要，作为第一个参数传递的值将转换为布尔值。
+
+如果省略或值 `0`，`-0`，`null`，`false`，`NaN`，`undefined`，`""`，该对象具有的初始值 false。
+
+所有其他值，包括任何对象，空数组`[]`或字符串`"false"`，都会创建一个初始值为的对象 true。
+
+## String
+
+[MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String)
+
+### 静态成员
+
+- `fromCharCode()` 通过一串 Unicode 创建字符串。
+
+### 实例成员
+
+- `length` 属性，返回字符串的长度。
+
+字符串是一个伪数组。
+
+- `charAt()`
+  
+  返回给定 index（下标）处的字符；如果指定的 index 值超出了该范围，则返回一个空字符串。
+  
+- `charCodeAt()`
+
+  返回给定 index（下标）的字符的 Unicode 的值；如果 index 超出范围，charCodeAt() 返回 NaN。
+
+- `concat()`
+
+  将一个或多个字符串与原字符串连接合并，形成一个新的字符串并返回。
+
+- `includes()`
+
+  判断一个字符串里是否包含其他字符串。
+
+- `startWith()`
+
+  判断字符串的起始位置是否匹配其他字符串中的字符。
+
+- `endsWith()`
+
+  判断一个字符串的是否以给定字符串结尾，结果返回布尔值。
+
+- `indexOf()`
+
+  从字符串对象中返回首个被发现的给定值的索引值，如果没有找到则返回-1。
+
+- `lastInsexOf()` 
+
+  从字符串对象中返回最后一个被发现的给定值的索引值，如果没有找到则返回-1。
+
+- `padStart()` 
+
+  在当前字符串头部填充指定的字符串， 直到达到指定的长度。 返回一个新的字符串。
+
+  > 语法：**str.padStart(targetLength [, padString])**
+
+  **参数：**
+
+  targetLength
+
+  当前字符串需要填充到的目标长度。如果这个数值小于当前字符串的长度，则返回当前字符串本身。
+
+  padString 可选
+
+  填充字符串。如果字符串太长，使填充后的字符串长度超过了目标长度，则只保留最左侧的部分，其他部分会被截断。此参数的默认值为 " "（U+0020）。
+
+- `padEnd()` 
+
+  在当前字符串尾部填充指定的字符串， 直到达到指定的长度。 返回一个新的字符串。
+
+- `repeat()` 
+
+  返回指定重复次数的字符串
+
+- `slice(a,b)` 
+
+  摘取一个字符串区域，返回一个新的字符串。 从 a 位置，取到 b 位置（取不到 b）；a b 位置可以是负数
+
+- `substr(a,b)` 
+
+  通过指定字符数返回在指定位置开始的字符串中的字符。 从 a 位置，取指定的长度 b 个字符；a b 位置可以是负数
+
+- `substring()` 
+
+  返回在字符串中指定两个下标之间的字符。参数不可是负数；参数可以调换
+
+  > 语法：**str.substring(indexStart[, indexEnd])**
+
+  substring 提取从 indexStart 到 indexEnd（不包括）之间的字符。
+  
+  - 如果 indexStart 等于 indexEnd，substring 返回一个空字符串。
+  - 如果省略 indexEnd，substring 提取字符一直到字符串末尾。
+  - 如果任一参数小于 0 或为 NaN，则被当作 0。
+  - 如果任一参数大于 stringName.length，则被当作 stringName.length。
+  - 如果 indexStart 大于 indexEnd，则 substring 的执行效果就像两个参数调换了一样。
+
+- `toLowerCase()` 
+
+  将字符串转换成小写并返回。
+
+- `toUpperCase()` 
+
+  将字符串转换成大写并返回。
+
+- `trim()` 
+
+  从字符串的开始和结尾去除空格。
+
+- `trimStart()` 等同于 `trimLeft()` 
+
+  从字符串的左侧去除空格。
+
+- `trimEnd()` 等同于 `trimRight()` 
+
+  从字符串的右侧去除空格。
+
+- `split()` 
+
+  使用指定的分隔符字符串将一个 String 对象分割成子字符串数组，以一个指定的分割字串来决定每个拆分的位置。

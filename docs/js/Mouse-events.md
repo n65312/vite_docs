@@ -1,0 +1,106 @@
+---
+title: '鼠标事件'
+date: 2017-06-23
+tags:
+ - JS
+---
+
+# 鼠标事件
+
+## 事件类型
+
+- `click`：
+
+  用户点击主鼠标按钮（一般是左键）或者在聚焦时按下回车键时触发
+
+- `dblclick`：
+
+  用户双击主鼠标按键触发（频率取决于系统配置）
+
+- `mousedown`：
+
+  用户按下鼠标任意按键时触发
+
+- `mouseup`：
+
+  用户抬起鼠标任意按键时触发
+
+- `mousemove`：
+
+  鼠标在元素上移动时触发
+
+- `mouseover`：
+
+  鼠标进入元素时触发
+
+- `mouseout`：
+
+  鼠标离开元素时触发
+
+- `mouseenter`：
+
+  鼠标进入元素时触发，该事件不会冒泡
+
+- `mouseleave`：
+
+  鼠标离开元素时触发，该事件不会冒泡
+
+**区别：**
+
+- `over`和`out`：
+
+  不考虑子元素，从父元素移动到子元素，对于父元素而言，仍然算作离开
+
+- `enter`和`leave`：
+
+  考虑子元素，子元素仍然是父元素的一部分
+
+- `mouseenter`和`mouseleave`不会冒泡
+
+> `e.bubbles`：事件属性，可以查看是否冒泡，boolean 值
+
+## 事件对象
+
+所有鼠标事件，事件处理程序中的事件对象，都为 MouseEvent
+
+- `altKey`
+
+  触发事件时，是否按下了键盘的 alt 键
+
+- `ctrlKey`
+
+  触发事件时，是否按下了键盘的 ctrl 键
+
+- `shiftKey`
+
+  触发事件时，是否按下了键盘的 shift 键
+
+- `button`
+  触发事件时，按下的鼠标按键类型
+  - 0：左键
+  - 1：中键
+  - 2：右键
+
+位置：
+
+- `page`：`pageX、pageY`
+
+  鼠标距离当前页面的横纵坐标
+
+- `client`：`clientX、clientY`
+
+  鼠标相对于视口的坐标
+
+- `offset`：`offsetX、offsetY`
+
+  鼠标相对于事件源的内边距的坐标
+
+- `screen`：`screenX、screenY`
+
+  鼠标相对于屏幕的横纵坐标
+
+- `x、y`，等同于`clientX、clientY`
+
+- `movement`：`movementX、movementY`
+
+  只在鼠标移动事件中有效，相对于上一次鼠标位置，偏移的距离
