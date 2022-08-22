@@ -6,7 +6,7 @@ export default {
   themeConfig: {
     siteTitle: 'My VitePress',
     nav: [
-      { text: 'Article', link: '/article/Q&A1', activeMatch: '/article/' },
+      { text: 'Article', link: '/article/Question1', activeMatch: '/article/' },
       { 
         text: 'Course Notes',
         items: [
@@ -25,10 +25,10 @@ export default {
     sidebar: {
       '/article/':[
         {
-          text: 'Q&A',
+          text: 'Q & A',
           collapsible: true,
           items: [
-            { text: '30 岁了， 现在开始努力，晚吗?', link: '/article/Q&A1' }
+            { text: '30 岁了， 现在开始努力，晚吗?', link: '/article/Question1' }
           ]
         },
       ],
