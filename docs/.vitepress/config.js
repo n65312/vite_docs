@@ -101,7 +101,6 @@ export default {
       '/js/': [
         {
           text: 'JavaScript',
-          collapsible: true,
           items: [
             { text: 'Overview', link: '/js/Overview' },
             { text: 'First JS program', link: '/js/First-JS-program' },
@@ -114,9 +113,9 @@ export default {
             { text: 'Increase & decrease', link: '/js/Increase-and-decrease' },
             { text: 'Logical Operators', link: '/js/Logical-Operators' },
             { text: 'Supplementary', link: '/js/Supplementary' },
-            { text: 'Digital storage', link: '/js/Digital-storage' },
-            { text: 'Bit operation', link: '/js/Bit-operation' },
             { text: 'Remainder operation', link: '/js/Remainder-operation' },
+            { text: 'Bit operation', link: '/js/Bit-operation' },
+            { text: 'Digital storage', link: '/js/Digital-storage' },
             { text: 'flow chart', link: '/js/flow-chart' },
             { text: 'if', link: '/js/if' },
             { text: 'switch', link: '/js/switch' },
