@@ -1,22 +1,12 @@
 {
-  "name": "vite_docs",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs"
-  },
-  "repository": "git+https://github.com/n65312/vite_docs.git",
-  "author": "Nathan <niu_nn@outlook.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/n65312/vite_docs/issues"
-  },
-  "homepage": "https://github.com/n65312/vite_docs#readme",
   "devDependencies": {
-    "vitepress": "^1.0.0-alpha.9",
-    "vue": "^3.2.37"
+    "@types/node": "^24.0.3",
+    "vitepress": "^1.6.3",
+    "vitepress-sidebar": "^1.31.1"
+  },
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs"
   }
 }

@@ -1,0 +1,64 @@
+# TypeScript 简介
+
+- 1. TypeScript 由微软开发,是基于 JavaScript 的⼀个扩展语⾔。
+- 2. TypeScript 包含了 JavaScript 的所有内容,即: TypeScript 是 JavaScrip t 的超集。
+  ![[｜附件｜/Typora 2025-01-07 11.53.14.png|200]]
+- 3. TypeScript 增加了:静态类型检查、接⼝、 泛型等很多现代开发特性,更适合⼤型项⽬ 的开发。
+- 4. TypeScript 需要编译为 JavaScript ,然后交给浏览器或其他 JavaScript 运⾏环 境执⾏。
+
+## 为何需要 TypeScript
+
+### 1.今⾮昔⽐的 JavaScript(了解)
+- JavaScript 当年诞⽣时的定位是浏览器脚本语⾔,⽤于在⽹⻚中嵌⼊简单的逻辑,且代码 量很少。
+- 随着时间的推移,JavaScript 变得越来越流⾏,如今的 JavaScript 已经可以全栈编程 了。
+- 现如今的 JavaScript 应⽤场景⽐当年丰富的多,代码量也⽐当年⼤很多,随便⼀个 JavaScript 项⽬的代码量,可以轻松的达到⼏万⾏,甚⾄⼗⼏万⾏! 
+- 然⽽ JavaScript 当年"出⽣简陋",没考虑到如今的应⽤场景和代码量,逐渐就出现了很多 困扰。
+### 2.JavaScript 中的困扰
+#### 1. 不清楚的数据类型
+```js
+let welcome = 'hello' 
+welcome() // 此⾏报错:TypeError: welcome is not a function
+```
+#### 2.有漏洞的逻辑
+```js
+const str = Date.now() % 2 ? '奇数' : '偶数'
+if (str !== '奇数'){
+	alert('hello') 
+}else if(str === '偶数'){
+	alert('world') }
+```
+
+#### 3. 访问不存在的属性
+
+```js
+const obj = { width: 10, height: 15 }; 
+const area = obj.width * obj.heigth;
+```
+#### 4. 低级的拼写错误
+```js
+const message = 'hello,world' message.toUperCase() //遗漏了一个"p"
+```
+### 3.静态类型检查
+- 在代码运⾏前进⾏检查,发现代码的错误或不合理之处,减⼩运⾏时出现异常的⼏率,此种检 查叫『静态类型检查』,TypeScript 和核⼼就是『静态类型检查』,简⾔之就是把运⾏时的 错误前置
+- 同样的功能,TypeScript 的代码量要⼤于 JavaScript,但由于 TypeScript 的代码结构更加 清晰,在后期代码的维护中 TypeScript 却胜于 JavaScript
+
+## 编译 TypeScript
+### 1. 命令⾏编译
+要把 .ts ⽂件编译为 .js ⽂件,需要配置 TypeScript 的编译环境,步骤如下:
+- 第⼀步:创建⼀个 demo.ts ⽂件,例如: 
+```ts
+const person = {
+	name: '李四',
+	age: 18
+}
+console.log(`我叫${person.name}，我今年${person.age}岁了`)
+```
+- 第⼆步:全局安装 `TypeScript  npm i typescript -g`
+- 第三步:使⽤命令编译 .ts ⽂件`tsc demo.ts`
+
+### 2. ⾃动化编译
+- 第⼀步:创建 TypeScript 编译控制⽂件：`tsc --init`
+- 第⼆步:监视⽬录中的 .ts ⽂件变化  `tsc --watch 或 tsc -w`
+- 第三步:⼩优化,当编译出错时不⽣成 .js ⽂件 `tsc --noEmitOnError --watch`
+	- 备注:当然也可以修改tsconfig.json 中的 noEmitOnError 配置
+
