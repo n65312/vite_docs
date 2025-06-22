@@ -13,6 +13,7 @@ const vitePressOptions = {
     logo: { src: '/vitepress-logo-mini.svg', width: 24, height: 24 },
     head: [
     ['link',{ rel: 'icon', href: '/logo.png' }],
+    ['meta', { name: 'algolia-site-verification', content: '7F3B451E0494ADF6' }],
   ],
     lastUpdated: {
       text: '最后更新',
