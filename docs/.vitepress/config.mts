@@ -32,8 +32,8 @@ const vitePressOptions = {
     search: {
       provider: 'algolia',
       options: {
-        appId: '8J64VVRP8K',
-        apiKey: 'a18e2f4cc5665f6602c5631fd868adfd',
+        appId: '40FQ2EB00O',
+        apiKey: '8176692a696303a180de40ea01ebe4d9',
         indexName: 'vitepress'
       }
     },
