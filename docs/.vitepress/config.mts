@@ -5,15 +5,23 @@ import { withSidebar } from 'vitepress-sidebar';
 // 该配置文件用于配置 VitePress 的站点信息、主题配置、导航栏、侧边栏等  
 const vitePressOptions = {
   title: '林的博客',
+  lang: 'zh-CN',
+  base: '/vite_docs/',
+  cleanUrls: true,
   description: "欢迎来到 “林的博客”！这里是专注前端技术的学习乐园，深度解析 HTML、CSS、JavaScript 基础语法与实战技巧，更有 Vue 框架从入门到进阶的全流程经验分享。无论是代码原理剖析，还是项目案例拆解，都能助你轻松掌握前端开发技能，与木木一同开启高效学习之旅。",
   themeConfig:{
     logo: { src: '/vitepress-logo-mini.svg', width: 24, height: 24 },
     head: [
     ['link',{ rel: 'icon', href: '/logo.png' }],
   ],
-    base: '/vite_docs/',
-    lastUpdated: true,
-    cleanUrls: true,
+    lastUpdated: {
+      text: '最后更新',
+      formatOptions: {
+        dateStyle: 'full',
+        timeStyle: 'short'
+      }
+    },
+    lastUpdatedText: '上次更新',
     docFooter: {
       prev: '上一页',
       next: '下一页'
