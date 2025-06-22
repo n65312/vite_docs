@@ -8,13 +8,15 @@ const vitePressOptions = {
   lang: 'zh-CN',
   base: '/vite_docs/',
   cleanUrls: true,
+  head: [
+    ['link', { rel: 'icon', href: '/vite_docs/logo.png' }],
+    ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }],
+    ['meta', { name: 'algolia-site-verification', content: '7F3B451E0494ADF6' }]
+  ],
   description: "欢迎来到 “林的博客”！这里是专注前端技术的学习乐园，深度解析 HTML、CSS、JavaScript 基础语法与实战技巧，更有 Vue 框架从入门到进阶的全流程经验分享。无论是代码原理剖析，还是项目案例拆解，都能助你轻松掌握前端开发技能，与木木一同开启高效学习之旅。",
   themeConfig:{
     logo: { src: '/vitepress-logo-mini.svg', width: 24, height: 24 },
-    head: [
-    ['link',{ rel: 'icon', href: '/logo.png' }],
-    ['meta', { name: 'algolia-site-verification', content: '7F3B451E0494ADF6' }],
-  ],
+
     lastUpdated: {
       text: '最后更新',
       formatOptions: {
@@ -57,7 +59,7 @@ const vitePressOptions = {
  * 该插件会扫描指定目录下的 Markdown 文件，并根据文件名和目录结构 
  */ 
 export default defineConfig(
-  withSidebar(vitePressOptions, [
+  withSidebar( vitePressOptions , [
     {
     documentRootPath: 'docs',
     scanStartPath: 'html',
