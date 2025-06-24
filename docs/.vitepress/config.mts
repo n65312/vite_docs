@@ -66,7 +66,7 @@ const themeConfig = {
     },
     {text: '文章', link: 'article/00'},
   ],
-  socialLinks: [{icon: 'github', link: 'https://vitepress.dev'}],
+  socialLinks: [{icon: 'github', link: 'https://github.com/n65312/vite_docs'}],
   footer: {
     message: '基于 MIT 许可发布',
     copyright: `版权所有 © 2023-${presentYear} 林的博客`,
