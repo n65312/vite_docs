@@ -1,104 +1,92 @@
-
 import { defineConfig } from 'vitepress'
-import { withSidebar } from 'vitepress-sidebar';
+import { withSidebar } from 'vitepress-sidebar'
+import packageJson from '../../package.json'
 
-// 该配置文件用于配置 VitePress 的站点信息、主题配置、导航栏、侧边栏等  
-const vitePressOptions = {
+// 提取常量
+const presentYear = new Date().getFullYear()
+const logoConfig = {src: '/logo-32.png', width: 24, height: 24}
+
+// 定义侧边栏目录， 用于手动排序
+// 这里的目录名需要与实际文件夹名保持一致
+const sidebarDirs = [
+  'html', 'css', 'js', 'ts', 'vue', 'article'
+]
+
+// 侧边栏基础配置
+const baseSidebarConfig = {
+  manualSortFileNameByPriority: sidebarDirs, // 手动排序文件名
+  collapsed: true, // 是否默认折叠
+  capitalizeFirst: false, // 是否将标题首字母大写
+  useTitleFromFileHeading: true, // 是否使用文件中的标题作为侧边栏标题
+  useTitleFromFrontmatter: true, // 是否使用 frontmatter 中的标题作为侧边栏标题
+  useFolderTitleFromIndexFile: true, // 是否使用文件夹中的 index 文件标题作为侧边栏标题
+}
+
+
+// 侧边栏配置 
+const sidebarConfig = [
+  {
+    ...baseSidebarConfig,
+    documentRootPath: 'docs',
+    resolvePath: '/',
+  },
+]
+
+// 头部元信息配置
+const headConfig = [
+  ['link', {rel: 'icon', type: 'image/png', href: '/vite_docs/logo-32.png', sizes: '32x32'}],
+  ['link', {rel: 'icon', type: 'image/png', href: '/vite_docs/logo-16.png', sizes: '16x16'}],
+  ['link', {rel: 'shortcut icon', href: '/vite_docs/favicon.ico'}],
+  ['meta', {name: 'algolia-site-verification', content: '7F3B451E0494ADF6'}],
+]
+
+// 主题配置
+const themeConfig = {
+  logo: logoConfig,
+  docFooter: {
+    prev: '上一页',
+    next: '下一页',
+  },
+  search:{
+    provider: 'algolia',
+    options: {
+      appId: '40FQ2EB00O',
+      apiKey: '8176692a696303a180de40ea01ebe4d9',
+      indexName: 'vitepress'
+    }
+  },
+  nav: [
+    {text: '首页', link: '/'},
+    {
+      text: '前端',
+      items: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'Vue'].map((text, index) => ({
+        text,
+        link: `${['html', 'css', 'js', 'ts', 'vue'][index]}/00`,
+      }))
+    },
+    {text: '文章', link: 'article/00'},
+  ],
+  socialLinks: [{icon: 'github', link: 'https://vitepress.dev'}],
+  footer: {
+    message: '基于 MIT 许可发布',
+    copyright: `版权所有 © 2023-${presentYear} 林的博客`,
+  },
+}
+
+//  VitePress 站点配置
+const vitePressConfig = {
   title: '林的博客',
+  lastUpdated: true,
   lang: 'zh-CN',
   base: '/vite_docs/',
   cleanUrls: true,
-  head: [
-    ['link', { rel: 'icon', href: '/vite_docs/logo.png' }],
-    ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }],
-    ['meta', { name: 'algolia-site-verification', content: '7F3B451E0494ADF6' }]
-  ],
-  description: "欢迎来到 “林的博客”！这里是专注前端技术的学习乐园，深度解析 HTML、CSS、JavaScript 基础语法与实战技巧，更有 Vue 框架从入门到进阶的全流程经验分享。无论是代码原理剖析，还是项目案例拆解，都能助你轻松掌握前端开发技能，与木木一同开启高效学习之旅。",
-  themeConfig:{
-    logo: { src: '/vitepress-logo-mini.svg', width: 24, height: 24 },
-
-    lastUpdated: {
-      text: '最后更新',
-      formatOptions: {
-        dateStyle: 'full',
-        timeStyle: 'short'
-      }
-    },
-    lastUpdatedText: '上次更新',
-    docFooter: {
-      prev: '上一页',
-      next: '下一页'
-    },
-    search: {
-      provider: 'algolia',
-      options: {
-        appId: '40FQ2EB00O',
-        apiKey: '8176692a696303a180de40ea01ebe4d9',
-        indexName: 'vitepress'
-      }
-    },
-    nav: [
-      { text: 'Home', link: '/' },
-      { text: '前端', items: [
-        { text: 'HTML', link: '/html/' },
-        { text: 'CSS', link: '/css/' },
-        { text: 'JavaScript', link: '/js/' },
-        { text: 'TypeScript', link: '/ts/' },
-        { text: 'Vue', link: '/vue/' },
-      ] },
-      { text: '文章', link: '/article/' }
-    ],
-    socialLinks: [
-      { icon: 'github', link: 'https://vitepress.dev'}
-    ]
-  }
+  metaChunk: true,
+  head: headConfig,
+  sitemap: {
+    hostname: packageJson.homepage,
+  },
+  themeConfig
 }
-/**
- * 自动生成侧边栏配置
- * 通过 vitepress-sidebar 插件来实现
- * 该插件会扫描指定目录下的 Markdown 文件，并根据文件名和目录结构 
- */ 
-export default defineConfig(
-  withSidebar( vitePressOptions , [
-    {
-    documentRootPath: 'docs',
-    scanStartPath: 'html',
-    resolvePath: '/html/',
-    useTitleFromFileHeading: true,
-  },
-  {
-    documentRootPath: 'docs',
-    scanStartPath: 'css',
-    resolvePath: '/css/',
-    useTitleFromFileHeading: true,
-  },
-  {
-    documentRootPath: 'docs',
-    scanStartPath: 'js',
-    resolvePath: '/js/',
-    useTitleFromFileHeading: true,
-  },
-  {
-    documentRootPath: 'docs',
-    scanStartPath: 'ts',
-    resolvePath: '/ts/',
-    useTitleFromFileHeading: true,
-  },
-  {
-    documentRootPath: 'docs',
-    scanStartPath: 'vue',
-    resolvePath: '/vue/',
-    useTitleFromFileHeading: true,
-  },
-  {
-    documentRootPath: 'docs',
-    scanStartPath: 'article',
-    resolvePath: '/article/',
-    useTitleFromFileHeading: true,
-  }
-])
-)
 
-// https://vitepress.dev/reference/site-config
-
-// https://vitepress.dev/reference/default-theme-config
+// 定义最终配置
+export default defineConfig(withSidebar(vitePressConfig, sidebarConfig))

@@ -66,6 +66,7 @@ $RECYCLE.BIN/
 # ----------------End of common ignore files----------------
 
 # Project builds files
+cache/
 dist/
 docs-dist/
 

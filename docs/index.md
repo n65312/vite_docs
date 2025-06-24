@@ -1,6 +1,8 @@
 ---
-# https://vitepress.dev/reference/default-theme-home-page
+title: HOME
 layout: home
+
+# https://vitepress.dev/reference/default-theme-home-page 
 
 hero:
   name: "林的博客"
@@ -9,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /html/
+      link: /html/00
     - theme: alt
       text: GitHub
       link: https://vitepress.dev/zh/
