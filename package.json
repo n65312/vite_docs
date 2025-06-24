@@ -9,12 +9,15 @@
   },
   "devDependencies": {
     "@types/node": "^24.0.3",
+    "cross-env": "^7.0.3",
     "vitepress": "^1.6.3",
     "vitepress-sidebar": "^1.31.1"
   },
   "scripts": {
-    "dev": "vitepress dev docs",
-    "build": "vitepress build docs",
+    "clean": "rd /s /q docs\\.vitepress\\cache",
+    "dev": "cross-env NODE_ENV=development vitepress dev docs",
+    "build": "cross-env NODE_ENV=production vitepress build docs",
+    "serve": "vitepress serve docs",
     "preview": "vitepress preview docs"
   }
 }

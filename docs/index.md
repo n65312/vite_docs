@@ -13,7 +13,7 @@ hero:
       text: Get Started
       link: /html/00
     - theme: alt
-      text: GitHub
+      text: VitePress
       link: https://vitepress.dev/zh/
   image:
       src: /vitepress-logo.svg

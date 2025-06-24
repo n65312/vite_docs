@@ -2,6 +2,10 @@ import { defineConfig } from 'vitepress'
 import { withSidebar } from 'vitepress-sidebar'
 import packageJson from '../../package.json'
 
+// 动态设置 base 路径
+const isDevEnvironment = process.env.NODE_ENV === 'development'
+const base = isDevEnvironment ? '/' : '/vite_docs/'
+
 // 提取常量
 const presentYear = new Date().getFullYear()
 const logoConfig = {src: '/logo-32.png', width: 24, height: 24}
@@ -34,9 +38,9 @@ const sidebarConfig = [
 
 // 头部元信息配置
 const headConfig = [
-  ['link', {rel: 'icon', type: 'image/png', href: '/vite_docs/logo-32.png', sizes: '32x32'}],
-  ['link', {rel: 'icon', type: 'image/png', href: '/vite_docs/logo-16.png', sizes: '16x16'}],
-  ['link', {rel: 'shortcut icon', href: '/vite_docs/favicon.ico'}],
+  ['link', {rel: 'icon', type: 'image/png', href: `${base}logo-32.png`, sizes: '32x32'}],
+  ['link', {rel: 'icon', type: 'image/png', href: `${base}logo-16.png`, sizes: '16x16'}],
+  ['link', {rel: 'shortcut icon', href: `${base}favicon.ico` }],
   ['meta', {name: 'algolia-site-verification', content: '7F3B451E0494ADF6'}],
 ]
 
@@ -50,9 +54,9 @@ const themeConfig = {
   search:{
     provider: 'algolia',
     options: {
-      appId: '40FQ2EB00O',
-      apiKey: '8176692a696303a180de40ea01ebe4d9',
-      indexName: 'vitepress'
+      appId: '2S79GGI9JQ',
+      apiKey: '69047d25be530a400c6f4bfdc3cd448b',
+      indexName: 'n65312io'
     }
   },
   nav: [
@@ -78,7 +82,7 @@ const vitePressConfig = {
   title: '林的博客',
   lastUpdated: true,
   lang: 'zh-CN',
-  base: '/vite_docs/',
+  base: `${base}`,
   cleanUrls: true,
   metaChunk: true,
   head: headConfig,
