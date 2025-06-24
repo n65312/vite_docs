@@ -1,4 +1,12 @@
 {
+  "name": "lin-blog",
+  "version": "0.1.0",
+  "description": "林的博客",
+  "homepage": "https://n65312.github.io/vite_docs/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/n65312/vite_docs"
+  },
   "devDependencies": {
     "@types/node": "^24.0.3",
     "vitepress": "^1.6.3",
