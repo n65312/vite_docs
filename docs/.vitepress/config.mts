@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import type { HeadConfig } from 'vitepress'
 import { withSidebar } from 'vitepress-sidebar'
 import packageJson from '../../package.json'
 
@@ -26,7 +27,6 @@ const baseSidebarConfig = {
   useFolderTitleFromIndexFile: true, // 是否使用文件夹中的 index 文件标题作为侧边栏标题
 }
 
-
 // 侧边栏配置 
 const sidebarConfig = [
   {
@@ -37,7 +37,7 @@ const sidebarConfig = [
 ]
 
 // 头部元信息配置
-const headConfig = [
+const headConfig: HeadConfig[] = [
   ['link', {rel: 'icon', type: 'image/png', href: `${base}logo-32.png`, sizes: '32x32'}],
   ['link', {rel: 'icon', type: 'image/png', href: `${base}logo-16.png`, sizes: '16x16'}],
   ['link', {rel: 'shortcut icon', href: `${base}favicon.ico` }],
