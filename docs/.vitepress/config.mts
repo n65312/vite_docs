@@ -90,7 +90,7 @@ const themeConfig = {
 
 //  VitePress 站点配置
 const vitePressConfig = {
-  title: '林的博客',
+  title: 'N的叁次方',
   lastUpdated: true,
   lang: 'zh-CN',
   base: `${base}`,
