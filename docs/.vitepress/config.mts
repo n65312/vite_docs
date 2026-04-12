@@ -4,8 +4,12 @@ import { withSidebar } from 'vitepress-sidebar'
 import packageJson from '../../package.json'
 
 // 动态设置 base 路径
-const isDevEnvironment = process.env.NODE_ENV === 'development'
-const base = isDevEnvironment ? '/' : '/vite_docs/'
+//const isDevEnvironment = process.env.NODE_ENV === 'development'
+//const base = isDevEnvironment ? '/' : '/vite_docs/'
+
+// 这里的逻辑：只有在 GitHub Actions 环境下才带子路径
+// Cloudflare 和本地开发都会使用根路径 '/'
+const base = process.env.GITHUB_ACTIONS === 'true' ? '/vite_docs/' : '/'
 
 // 提取常量
 const presentYear = new Date().getFullYear()
