@@ -73,3 +73,9 @@ dist/
 docs/.vitepress/dist
 docs/.vitepress/cache/deps/vitepress___@vueuse_core.js
 docs/.vitepress/cache/deps/vitepress___@vueuse_core.js
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
