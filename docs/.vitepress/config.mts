@@ -73,6 +73,13 @@ const themeConfig = {
       }))
     },
     {text: '文章', link: 'article/00'},
+    {
+      text: '友链',
+      items:[
+        {text: 'VitePress', link: 'https://vitepress.dev/zh/'},
+        {text: 'Cloudflare', link: 'https://dash.cloudflare.com/'},
+      ]
+    }
   ],
   socialLinks: [{icon: 'github', link: 'https://github.com/n65312/vite_docs'}],
   footer: {

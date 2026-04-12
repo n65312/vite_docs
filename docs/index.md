@@ -12,9 +12,6 @@ hero:
     - theme: brand
       text: Get Started
       link: /html/00
-    - theme: alt
-      text: VitePress
-      link: https://vitepress.dev/zh/
   image:
       src: /vitepress-logo.svg
       alt: logo
