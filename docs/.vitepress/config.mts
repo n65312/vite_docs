@@ -1,7 +1,33 @@
 import { defineConfig } from 'vitepress'
 import type { HeadConfig } from 'vitepress'
 import { withSidebar } from 'vitepress-sidebar'
+import { defineTeekConfig } from 'vitepress-theme-teek/config'
 import packageJson from '../../package.json'
+
+// 启用回到顶部，关闭会改写 URL/侧栏/标题的插件以保留现有结构
+const teekConfig = defineTeekConfig({
+  teekTheme: true,
+  teekHome: false,
+  vpHome: true,
+  backTop: {
+    enabled: true,
+    content: 'icon',
+  },
+  // 本站未配置任何评论服务，关闭无效的"前往评论"按钮（评论容器不会渲染）
+  toComment: {
+    enabled: false,
+  },
+  viewTransition: {
+    enabled: true,
+  },
+  vitePlugins: {
+    sidebar: false,
+    permalink: false,
+    mdH1: false,
+    docAnalysis: false,
+    autoFrontmatter: false,
+  },
+})
 
 // 动态设置 base 路径
 //const isDevEnvironment = process.env.NODE_ENV === 'development'
@@ -29,6 +55,8 @@ const baseSidebarConfig = {
   useTitleFromFileHeading: true, // 是否使用文件中的标题作为侧边栏标题
   useTitleFromFrontmatter: true, // 是否使用 frontmatter 中的标题作为侧边栏标题
   useFolderTitleFromIndexFile: true, // 是否使用文件夹中的 index 文件标题作为侧边栏标题
+  sortMenusByFrontmatterOrder: true, // 按 frontmatter order 排序，不依赖文件名编号
+  frontmatterOrderDefaultValue: 999, // 未声明 order 者排末尾
 }
 
 // 侧边栏配置 
@@ -86,6 +114,10 @@ const themeConfig = {
     message: '基于 MIT 许可发布',
     copyright: `版权所有 © 2023-${presentYear} 林的博客`,
   },
+  // 侧栏分组展开模式的首次访问默认值（默认关闭，保持多分组同时展开）。
+  // 运行期可在导航栏"主题增强"面板内切换，选择存于 localStorage，优先级高于此默认值。
+  // 开启后仅作用于顶层可折叠分组；不影响路由、正文与搜索。
+  sidebarAccordion: false,
 }
 
 //  VitePress 站点配置
@@ -100,7 +132,8 @@ const vitePressConfig = {
   sitemap: {
     hostname: packageJson.homepage,
   },
-  themeConfig
+  themeConfig,
+  extends: teekConfig,
 }
 
 // 定义最终配置

@@ -68,6 +68,7 @@ $RECYCLE.BIN/
 # Project builds files
 cache/
 dist/
+OPERATIONS.md
 
 # vitepress build files
 docs/.vitepress/dist
